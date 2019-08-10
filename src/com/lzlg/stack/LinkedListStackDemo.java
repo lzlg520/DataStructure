@@ -58,9 +58,7 @@ class LinkedListStack {
     public void push(int data) {
         LinkedNode node = new LinkedNode(data);
         LinkedNode temp = head;
-        while (temp.getNext() != null) {
-            temp = temp.getNext();
-        }
+        node.setNext(temp.getNext());
         temp.setNext(node);
     }
 
@@ -69,11 +67,8 @@ class LinkedListStack {
             throw new RuntimeException("栈空，无数据");
         }
         LinkedNode temp = head;
-        while (temp.getNext() != null) {
-            temp = temp.getNext();
-        }
-        int data = temp.getData();
-        temp = null;
+        int data = temp.getNext().getData();
+        head.setNext(temp.getNext().getNext());
         return data;
     }
 
@@ -85,7 +80,6 @@ class LinkedListStack {
         }
     }
 }
-
 
 class LinkedNode {
     private int data;
