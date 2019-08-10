@@ -41,19 +41,29 @@ public class SingleLinkedListDemo {
         System.out.printf("获取倒数第 %d 的节点： %s", 2, singleLinkedList.getLastIndexNode(2));
 */
         SingleLinkedList singleLinkedList = new SingleLinkedList();
-        singleLinkedList.addByNo(hero3);
-        singleLinkedList.addByNo(hero1);
+
         singleLinkedList.addByNo(hero2);
         singleLinkedList.addByNo(hero4);
-
+        System.out.println("第一个单向链表的内容是：");
         singleLinkedList.list();
         System.out.println("===============>>>>>>>>>>>>>>>>>>>");
 //        singleLinkedList.reverseList();
 //        System.out.println("反转链表之后=====>>>>>>");
 //        singleLinkedList.list();
 
-        System.out.println("反转打印链表=====>>>>>>");
-        singleLinkedList.reversePrint();
+//        System.out.println("反转打印链表=====>>>>>>");
+//        singleLinkedList.reversePrint();
+
+        SingleLinkedList otherList = new SingleLinkedList();
+        otherList.addByNo(hero3);
+        otherList.addByNo(hero1);
+        System.out.println("第二个单向链表的内容是：");
+        otherList.list();
+
+        System.out.println("===============>>>>>>>>>>>>>>>>>>>");
+        singleLinkedList = otherList.unionOrderList(singleLinkedList);
+        System.out.println("合并后的单向链表内容是：");
+        singleLinkedList.list();
     }
 
 }
@@ -65,21 +75,53 @@ class SingleLinkedList {
     /**
      * 合并两个有序链表
      *
-     * @param orderList
+     * @param otherList
      */
-    public void unionOrderList(SingleLinkedList orderList) {
-        HeroNode temp1 = head.next;
-        HeroNode temp2 = orderList.head.next;
-        // 判断链表是否为空
-        if(temp1 == null || temp2 == null) {
-            return;
+    public SingleLinkedList unionOrderList(SingleLinkedList otherList) {
+        HeroNode thisNode = this.head.next;
+        HeroNode otherNode = otherList.head.next;
+        if (thisNode == null && otherNode == null) {
+            return null;
         }
-        while (temp1.no > temp2.no) {
-
-
-            temp2 = temp2.next;
+        if (thisNode == null) {
+            return otherList;
+        }
+        if (otherNode == null) {
+            return this;
         }
 
+        HeroNode head;
+        if (thisNode.no <= otherNode.no) {
+            head = thisNode;
+            thisNode = thisNode.next;
+        } else {
+            head = otherNode;
+            otherNode = otherNode.next;
+        }
+
+        SingleLinkedList resultList = new SingleLinkedList();
+        resultList.head.next = head;
+
+        HeroNode temp = head;
+        while (thisNode != null && otherNode != null) {
+            if (thisNode.no <= otherNode.no) {
+                temp.next = thisNode;
+                thisNode = thisNode.next;
+            } else {
+                temp.next = otherNode;
+                otherNode = otherNode.next;
+            }
+            temp = temp.next;
+        }
+
+        if (thisNode == null) {
+            temp.next = otherNode;
+        }
+
+        if (otherNode == null) {
+            temp.next = thisNode;
+        }
+        return resultList;
     }
 
     /**
