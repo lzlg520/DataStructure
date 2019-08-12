@@ -5,7 +5,9 @@ public class RecursiveTest {
 
         print(5);
 
-        System.out.printf("%d's factorial is %d.", 10, factorial(10));
+        System.out.printf("%d's factorial is %d.\n", 10, factorial(10));
+
+        System.out.printf("The %d's fibonacci number is %d.\n", 8, fibonacci(8));
 
     }
 
@@ -32,5 +34,20 @@ public class RecursiveTest {
             return n;
         }
         return factorial(n - 1) * n;
+    }
+
+    /**
+     * 打印出第 n 个斐波那契数列的值
+     * 0, 1, 1, 2, 3, 5, 8, 13
+     *
+     * @param
+     * @return
+     */
+    private static int fibonacci(int n) {
+        if ((n == 1) || (n == 2)) {
+            return n - 1;
+        } else {
+            return fibonacci(n - 1) + fibonacci(n - 2);
+        }
     }
 }
