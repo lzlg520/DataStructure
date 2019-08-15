@@ -4,16 +4,51 @@ import java.util.*;
 
 public class ListTest {
     public static void main(String[] args) {
-        List<String> list = new ArrayList<>();
-        list.add("1");
-        list.add("2");
-        list.add(1, "3");
-        List<String> listTwo = new LinkedList<>(list);
-        list.addAll(listTwo);
+//        List<String> list = new ArrayList<>();
+//        list.add("1");
+//        list.add("2");
+//        list.add(1, "3");
+//        List<String> listTwo = new LinkedList<>(list);
+//        list.addAll(listTwo);
+//
+//        listTwo = list.subList(2, 5);
+//        listTwo.clear();
+//        System.out.println(list);
 
-        listTwo = list.subList(2, 5);
-        listTwo.clear();
-        System.out.println(list);
+        HashSet<Integer> set1 = new HashSet<>();
+        addRange(set1, 1);
+
+        ArrayList<Integer> list1 = new ArrayList<>();
+        addRange(list1, 2);
+
+        TreeSet<Integer> set2 = new TreeSet<>();
+        addRange(set2, 3);
+
+        LinkedList<Integer> list2 = new LinkedList<>();
+        addRange(list2, 5);
+
+        set1.removeAll(list1);
+
+        list1.addAll(set2);
+
+        list2.addAll(list1);
+
+        set1.removeAll(list2);
+
+        System.out.println(set1);
+
+
+//        System.out.println(set1);
+//        System.out.println(list1);
+//        System.out.println(set2);
+//        System.out.println(list2);
+
+    }
+
+    private static void addRange(Collection<Integer> collection, int step) {
+        for (int i = step * 2; i <= 25; i += step) {
+            collection.add(i);
+        }
     }
 
     /**
