@@ -15,7 +15,7 @@ public class ShellSort {
 //        CommonUtil.print(array);
 
 
-        int[] array = CommonUtil.randomArray(80000);
+        int[] array = CommonUtil.randomArray(8000000);
 //        System.out.println("使用希尔排序优化冒泡排序后，80000数据排序使用时间：" + CommonUtil.costTime(array, ShellSort::sort));
 
         System.out.println("使用希尔排序优化插入排序后，80000数据排序使用时间：" + CommonUtil.costTime(array, ShellSort::sort));
