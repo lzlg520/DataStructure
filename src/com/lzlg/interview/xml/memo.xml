@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<memo>
+    <note type="birthday">
+        <name>王平</name>
+        <sex>男</sex>
+        <date>12月23日</date>
+        <address>吉林省白山市第八中学</address>
+        <telephone>0439-31344532</telephone>
+        <email>wangping@sina.com</email>
+        <body>今天是王平生日</body>
+    </note>
+    <note type="shop">
+        <name>东方雪</name>
+        <sex>女</sex>
+        <date>8月3日</date>
+        <address>北京市海淀区中关村E世界</address>
+        <telephone>15984561235</telephone>
+        <email>eworld@vip.cn</email>
+        <body>今天是东方雪店铺开张的日子</body>
+    </note>
+</memo>
