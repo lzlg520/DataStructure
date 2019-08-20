@@ -101,6 +101,10 @@ class EmployeeList {
         }
         Employee temp = head;
         while (true) {
+            if (temp.id == employee.id) {
+                System.out.printf("已有id为%d的雇员\n", employee.id);
+                return;
+            }
             if (temp.next == null) {// 找到链表的最后
                 break;
             }
