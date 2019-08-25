@@ -25,6 +25,8 @@ public class Test {
 
         Graph graph = new Graph(data, matrix);
 
-        DijkstraAlgorithm.getMinPath(graph, 0);
+//        DijkstraAlgorithm.getMinPath(graph, 0);
+
+        FloydAlgorithm.getMinPath(graph);
     }
 }

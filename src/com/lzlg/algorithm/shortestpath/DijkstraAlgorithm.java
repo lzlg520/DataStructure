@@ -52,7 +52,7 @@ public class DijkstraAlgorithm {
 }
 
 /**
- * 访问过的节点信息类
+ * 单个出发顶点的访问顶点信息类
  */
 class VisitedVertex {
     private static final int N = 10000;

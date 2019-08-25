@@ -17,6 +17,9 @@ public class Graph {
     private int[][] matrix;
     // 边的数量
     private int edgeCount;
+    // 前驱节点的信息
+    // preVertex[i][j]的值 表示顶点i 到达 顶点j的前驱顶点的下标
+    private int[][] preVertex;
 
     /**
      * 构造方法
@@ -36,6 +39,13 @@ public class Graph {
                 }
             }
         }
+
+        // 初始化记录前驱顶点的数组
+        // 让i->j的前驱节点变为i
+        this.preVertex = new int[vertexCount][vertexCount];
+        for (int i = 0; i < vertexCount; i++) {
+            Arrays.fill(preVertex[i], i);
+        }
     }
 
     /**
@@ -44,6 +54,25 @@ public class Graph {
     public void show() {
         for (int i = 0; i < vertexCount; i++) {
             System.out.println(Arrays.toString(matrix[i]));
+        }
+    }
+
+    /**
+     * 显示弗洛伊德算法的结果
+     */
+    public void floydShow() {
+        // 显示前驱顶点信息
+        for (int i = 0; i < vertexCount; i++) {
+            for (int j = 0; j < vertexCount; j++) {
+                System.out.print(data[preVertex[i][j]] + " ");
+            }
+            System.out.println();
+            // 显示邻接矩阵信息
+            for (int j = 0; j < vertexCount; j++) {
+                System.out.print(data[i] + "->" + data[j] + "的最短路径为：" + matrix[i][j] + " ");
+            }
+            System.out.println();
+            System.out.println();
         }
     }
 
@@ -94,5 +123,9 @@ public class Graph {
 
     public int getEdgeCount() {
         return edgeCount;
+    }
+
+    public int[][] getPreVertex() {
+        return preVertex;
     }
 }

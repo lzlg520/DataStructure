@@ -72,7 +72,7 @@ public class HeapSort {
                 j++; // 将j指向右节点
             }
 
-            if (array[j] > temp) { // 和当前的订单比较
+            if (array[j] > temp) { // 和当前的顶点比较
                 array[i] = array[j]; // 将最大值放在顶点上
                 i = j; // 记录最大值的位置，到时候交换 对应 array[i] = temp
             } else { // 没有找到比当前顶点大的值，则退出循环
@@ -100,7 +100,7 @@ public class HeapSort {
                 j++; // 将j指向右节点
             }
 
-            if (array[j] < temp) { // 和当前的订单比较
+            if (array[j] < temp) { // 和当前的顶点比较
                 array[i] = array[j]; // 将最小值放在顶点上
                 i = j; // 记录最小值的位置，到时候交换 对应 array[i] = temp
             } else { // 没有找到比当前顶点小的值，则退出循环
